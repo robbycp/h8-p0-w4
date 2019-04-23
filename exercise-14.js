@@ -13,11 +13,14 @@ function naikAngkot(arrPenumpang) {
     for (var y = 0; y < rute.length; y++) {
       if (satu.naikDari == rute[y]) {
         naikDari = y;
-      } else if (satu.tujuan == rute[y]) {
+      }
+      if (satu.tujuan == rute[y]) {
         tujuan = y;
       }
     }
-    var harga = (tujuan - naikDari) * 2000;
+
+    var harga = Math.abs(tujuan - naikDari) * 2000;
+    
     satu.bayar = harga;
     penumpang_bayar.push(satu);
   }
@@ -28,5 +31,8 @@ function naikAngkot(arrPenumpang) {
 console.log(naikAngkot([['Dimitri', 'B', 'F'], ['Icha', 'A', 'B']]));
 // [ { penumpang: 'Dimitri', naikDari: 'B', tujuan: 'F', bayar: 8000 },
 //   { penumpang: 'Icha', naikDari: 'A', tujuan: 'B', bayar: 2000 } ]
+
+console.log(naikAngkot([['Dimitri', 'F', 'B'], ['Icha', 'B', 'A']]));
+console.log(naikAngkot([['Dimitri', 'B', 'B'], ['Icha', 'A', 'A']]));
 
 console.log(naikAngkot([])); //[]
